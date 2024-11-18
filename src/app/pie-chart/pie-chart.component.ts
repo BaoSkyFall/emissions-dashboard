@@ -28,30 +28,61 @@ export class PieChartComponent implements OnInit, OnDestroy {
   private createChart() {
     this.root = am5.Root.new("chartDiv");
     this.chart = this.root.container.children.push(
-      am5percent.PieChart.new(this.root, {})
+      am5percent.PieChart.new(this.root, {
+        radius: am5.percent(90),
+        innerRadius: am5.percent(40)
+      })
     );
 
     const series = this.chart.series.push(
       am5percent.PieSeries.new(this.root, {
         valueField: "value",
-        categoryField: "type"
+        categoryField: "type",
+        alignLabels: false,
+        innerRadius: am5.percent(40)
       })
     );
 
-    series.data.setAll(this.data);
+    // Add subtitle
+    let totalLabel = series.children.push(
+      am5.Label.new(this.root, {
+        text: this.subtitle,
+        textAlign: "center",
+        width: am5.percent(60),
+        centerX: am5.percent(50),
+        centerY: am5.percent(70),
+        fontSize: 18,
+        fill: am5.color(0x64748B)
+      })
+    );
 
     // Add title
-    this.chart.children.unshift(
+    let valueLabel = series.children.push(
       am5.Label.new(this.root, {
         text: this.title,
-        fontSize: 25,
-        fontWeight: "500",
         textAlign: "center",
-        x: am5.percent(50),
+        width: am5.percent(60),
         centerX: am5.percent(50),
-        paddingTop: 0,
-        paddingBottom: 0
+        centerY: am5.percent(10),
+        fontSize: 20,
+        fontWeight: "600"
       })
     );
-  }
+
+    series.slices.template.setAll({
+      stroke: am5.color(0xffffff),
+      strokeWidth: 2
+    });
+
+    series.labels.template.setAll({
+      fontSize: 12,
+      text: "{valuePercentTotal.formatNumber('#.0')}%",
+      inside: true,
+      radius: 50,
+      fill: am5.color(0xffffff),
+
+    });
+
+    series.data.setAll(this.data);
+ }
 }

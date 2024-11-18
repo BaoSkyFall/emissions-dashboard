@@ -1,72 +1,100 @@
-<div class="dashboard-container">
-  <div class="stats-cards">
-    <mat-card>
-      <mat-card-content>
-        <mat-icon class="eco-icon">eco</mat-icon>
-        <div class="stat-content">
-          <h3>Total emissions (tCO₂e)</h3>
-          <div class="stat-value">45,000</div>
-          <div class="increase">↑ 12% higher than previous year</div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+<div class="p-6">
 
-    <mat-card>
-      <mat-card-content>
-        <mat-icon class="energy-icon">bolt</mat-icon>
-        <div class="stat-content">
-          <h3>Energy consumption (tCO₂e)</h3>
-          <div class="stat-value">8,000</div>
-          <div class="decrease">↓ 12% lower than previous year</div>
+
+  <div class="grid grid-cols-2 gap-6 mb-6">
+    <div class="bg-white rounded-lg p-6 shadow">
+      <div class="flex justify-between items-start">
+        <div>
+          <app-icon name="cloud" color="text-green-500" background="#CEFBDF" styleBorder="circle"></app-icon>
+          <div class="text-md text-black-500">Total emissions (tCO₂e)</div>
+          <div class="text-3xl font-bold mt-1">45,000</div>
         </div>
-      </mat-card-content>
-    </mat-card>
+        <div class="text-red-500 text-sm flex items-center">
+          <app-icon name="long-arrow-alt-up"></app-icon> 12% higher than the previous year
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg p-6 shadow">
+      <div class="flex justify-between items-start">
+        <div>
+          <app-icon name="bolt" color="text-green-500" background="#CEFBDF" styleBorder="circle"></app-icon>
+          <div class="text-sm text-black-500">Energy consumption (tCO₂e)</div>
+          <div class="text-3xl font-bold mt-1">8,000</div>
+        </div>
+        <div class="text-green-500 text-sm flex items-center">
+          <app-icon name="long-arrow-alt-down"></app-icon> 12% lower than the previous year
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="content-row">
-    <mat-card class="emissions-panel">
-      <mat-card-header>
-        <mat-card-title>Emissions summary</mat-card-title>
-        <div class="dashboard">
-          <div class="year-selector">
-            <mat-form-field>
-              <mat-label>Select Year</mat-label>
-              <mat-select [value]="selectedYear" (selectionChange)="onYearChange($event.value)">
-                <mat-option *ngFor="let year of years" [value]="year">
-                  {{year}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+  <div class="grid grid-cols-2 gap-6">
+    <div class="bg-white rounded-lg p-6 shadow">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-semibold">Emissions summary</h2>
+        <div class="flex gap-4">
+          <mat-form-field appearance="outline" class="custom-select">
+            <mat-select [value]="'2024'">
+              <mat-option value="2024">2024</mat-option>
+              <mat-option value="2023">2023</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
 
-          <app-pie-chart
-            [data]="(emissions$ | async) || []"
-            title="Emissions by Type"
-            subtitle="Annual emissions in tCO2e">
+      <!-- Pie chart placeholder -->
+      <div class=" ">
+        <div class="dashboard">
+
+          <app-pie-chart [data]="(emissions$ | async) || []" title="28000"
+            subtitle="Total emissions in tCO2e">
           </app-pie-chart>
         </div>
-      </mat-card-header>
-      <mat-card-content>
-        <div id="chartDiv"></div>
-        <div class="emissions-list">
-          <!-- Emissions items here -->
-        </div>
-        <button mat-button color="primary">View details</button>
-      </mat-card-content>
-    </mat-card>
+      </div>
+    </div>
 
-    <mat-card class="compare-panel">
-      <mat-card-header>
-        <mat-card-title>Compare to</mat-card-title>
-        <mat-form-field>
-          <mat-select value="2023">
-            <mat-option value="2023">2023</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-card-header>
-      <mat-card-content>
-        <!-- Comparison content here -->
-      </mat-card-content>
-    </mat-card>
+    <div class="bg-white rounded-lg p-6 shadow">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-semibold">Compare to</h2>
+        <select class="border rounded px-3 py-1">
+          <option value="2023">2023</option>
+        </select>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <div class="text-sm">Total emissions (tCO₂e)</div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold">44,000</span>
+            <span class="text-green-500 text-sm">+15,200 (34.55%)</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <div class="text-sm">Scope 1 (tCO₂e)</div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold">22,000</span>
+            <span class="text-green-500 text-sm">+17,200 (78.18%)</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <div class="text-sm">Scope 2 (tCO₂e)</div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold">12,000</span>
+            <span class="text-green-500 text-sm">+12,000 (100%)</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <div class="text-sm">Scope 3 (tCO₂e)</div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold">14,000</span>
+            <span class="text-green-500 text-sm">+14,000 (100%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

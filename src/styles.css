@@ -2,3 +2,165 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.mat-mdc-form-field {
+  width: 140px;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-wrapper {
+  padding: 0;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
+  height: 36px;
+  padding: 0 10px !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading {
+  border-radius: 6px 0 0 6px !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing {
+  border-radius: 0 6px 6px 0 !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch {
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-arrow-wrapper {
+  transform: translateY(0);
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-value {
+  padding-top: 4px;
+}
+
+.mat-mdc-select-panel {
+  border-radius: 6px !important;
+  margin-top: 4px !important;
+}
+..mat-mdc-form-field {
+  width: 140px;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-wrapper {
+  padding: 0;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
+  height: 36px;
+  padding: 0 10px !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading {
+  border-radius: 6px 0 0 6px !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing {
+  border-radius: 0 6px 6px 0 !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch {
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-arrow-wrapper {
+  transform: translateY(0);
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-value {
+  padding-top: 4px;
+}
+
+.mat-mdc-select-panel {
+  border-radius: 6px !important;
+  margin-top: 4px !important;
+}.mat-mdc-form-field {
+  width: 140px;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-wrapper {
+  padding: 0;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
+  height: 36px;
+  padding: 0 10px !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading {
+  border-radius: 6px 0 0 6px !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing {
+  border-radius: 0 6px 6px 0 !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch {
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-arrow-wrapper {
+  transform: translateY(0);
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-value {
+  padding-top: 4px;
+}
+
+.mat-mdc-select-panel {
+  border-radius: 6px !important;
+  margin-top: 4px !important;
+}
+.mat-mdc-form-field {
+  width: 140px;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-wrapper {
+  padding: 0;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
+  height: 36px;
+  padding: 0 10px !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading {
+  border-radius: 10px 0 0 6px !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing {
+  border-radius: 0 10px 10px 0 !important;
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch {
+  border-color: #E2E8F0 !important;
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-arrow-wrapper {
+  transform: translateY(0);
+}
+
+.mat-mdc-form-field-appearance-outline .mat-mdc-select-value {
+  padding-top: 4px;
+}
+
+.mat-mdc-select-panel {
+  border-radius: 6px !important;
+  margin-top: 4px !important;
+}
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix  {
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+}
+.mat-mdc-form-field-infix {
+  min-height: 30px!important;
+}
