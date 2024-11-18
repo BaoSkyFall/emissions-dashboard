@@ -1,0 +1,42 @@
+.dashboard-container {
+  padding: 24px;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.content-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.eco-icon {
+  color: #4caf50;
+}
+
+.energy-icon {
+  color: #2196f3;
+}
+
+.increase { color: #f44336; }
+.decrease { color: #4caf50; }
+
+mat-card-content {
+  display: flex;
+  gap: 16px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+#chartDiv {
+  height: 300px;
+  width: 100%;
+}

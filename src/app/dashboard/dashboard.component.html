@@ -1,0 +1,72 @@
+<div class="dashboard-container">
+  <div class="stats-cards">
+    <mat-card>
+      <mat-card-content>
+        <mat-icon class="eco-icon">eco</mat-icon>
+        <div class="stat-content">
+          <h3>Total emissions (tCO₂e)</h3>
+          <div class="stat-value">45,000</div>
+          <div class="increase">↑ 12% higher than previous year</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-content>
+        <mat-icon class="energy-icon">bolt</mat-icon>
+        <div class="stat-content">
+          <h3>Energy consumption (tCO₂e)</h3>
+          <div class="stat-value">8,000</div>
+          <div class="decrease">↓ 12% lower than previous year</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="content-row">
+    <mat-card class="emissions-panel">
+      <mat-card-header>
+        <mat-card-title>Emissions summary</mat-card-title>
+        <div class="dashboard">
+          <div class="year-selector">
+            <mat-form-field>
+              <mat-label>Select Year</mat-label>
+              <mat-select [value]="selectedYear" (selectionChange)="onYearChange($event.value)">
+                <mat-option *ngFor="let year of years" [value]="year">
+                  {{year}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <app-pie-chart
+            [data]="(emissions$ | async) || []"
+            title="Emissions by Type"
+            subtitle="Annual emissions in tCO2e">
+          </app-pie-chart>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="chartDiv"></div>
+        <div class="emissions-list">
+          <!-- Emissions items here -->
+        </div>
+        <button mat-button color="primary">View details</button>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="compare-panel">
+      <mat-card-header>
+        <mat-card-title>Compare to</mat-card-title>
+        <mat-form-field>
+          <mat-select value="2023">
+            <mat-option value="2023">2023</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Comparison content here -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
