@@ -18,8 +18,8 @@ export class IconComponent {
   getContainerClasses() {
     return {
       'flex items-center justify-center': true,
-      'rounded-full p-3 w-fit	': this.styleBorder === 'circle',
-      'p-2 ': this.styleBorder === 'default'
+      'rounded-full p-3 w-fit': this.styleBorder === 'circle',
+      'p-2': this.styleBorder === 'default'
     };
   }
 

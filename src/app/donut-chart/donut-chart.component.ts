@@ -13,8 +13,8 @@ export class DonutChartComponent implements OnInit, OnDestroy {
   @Input() title: string | null = '';
   @Input() subtitle: string = '';
 
-  private root!: am5.Root;
-  private chart!: am5percent.PieChart;
+   root!: am5.Root;
+   chart!: am5percent.PieChart;
 
   ngOnInit() {
     this.createChart();
@@ -45,7 +45,7 @@ export class DonutChartComponent implements OnInit, OnDestroy {
     return baseSize; // original size for larger screens
   }
 
-  private updateFontSizes(width: number) {
+   updateFontSizes(width: number) {
     if (!this.chart || !this.chart.series.getIndex(0)) return;
 
     const series = this.chart.series.getIndex(0);
@@ -68,7 +68,7 @@ export class DonutChartComponent implements OnInit, OnDestroy {
     });
   }
 
-  private createChart() {
+   createChart() {
     this.root = am5.Root.new("chartDiv");
     this.chart = this.root.container.children.push(
       am5percent.PieChart.new(this.root, {
