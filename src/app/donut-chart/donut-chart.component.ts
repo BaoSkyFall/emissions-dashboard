@@ -13,8 +13,8 @@ export class DonutChartComponent implements OnInit, OnDestroy {
   @Input() title: string | null = '';
   @Input() subtitle: string = '';
 
-   root!: am5.Root;
-   chart!: am5percent.PieChart;
+  root!: am5.Root;
+  chart!: am5percent.PieChart;
 
   ngOnInit() {
     this.createChart();
@@ -34,9 +34,9 @@ export class DonutChartComponent implements OnInit, OnDestroy {
     this.updateFontSizes(width);
   }
 
-  private getResponsiveFontSize(baseSize: number, width: number,type:string =''): number {
+  private getResponsiveFontSize(baseSize: number, width: number, type: string = ''): number {
     if (width < 640) { // sm breakpoint
-      return type=='label'? baseSize * 0.55  :baseSize * 0.35; // 75% of original size
+      return type == 'label' ? baseSize * 0.55 : baseSize * 0.35; // 75% of original size
     } else if (width < 768) { // md breakpoint
       return baseSize * 0.65; // 85% of original size
     } else if (width < 1024) { // lg breakpoint
@@ -45,7 +45,7 @@ export class DonutChartComponent implements OnInit, OnDestroy {
     return baseSize; // original size for larger screens
   }
 
-   updateFontSizes(width: number) {
+  updateFontSizes(width: number) {
     if (!this.chart || !this.chart.series.getIndex(0)) return;
 
     const series = this.chart.series.getIndex(0);
@@ -68,12 +68,12 @@ export class DonutChartComponent implements OnInit, OnDestroy {
     });
   }
 
-   createChart() {
+  createChart() {
     this.root = am5.Root.new("chartDiv");
     this.chart = this.root.container.children.push(
       am5percent.PieChart.new(this.root, {
         radius: am5.percent(90),
-        innerRadius: am5.percent(40)
+        innerRadius: am5.percent(40),
       })
     );
 
@@ -82,7 +82,8 @@ export class DonutChartComponent implements OnInit, OnDestroy {
         valueField: "value",
         categoryField: "type",
         alignLabels: false,
-        innerRadius: am5.percent(40)
+        innerRadius: am5.percent(40),
+
       })
     );
 
@@ -91,7 +92,7 @@ export class DonutChartComponent implements OnInit, OnDestroy {
         am5.color("#00D1FF"),
         am5.color("#34C759"),
         am5.color("#007AFF")
-      ]
+      ],
     }));
 
     // Add subtitle with initial font size
@@ -103,7 +104,8 @@ export class DonutChartComponent implements OnInit, OnDestroy {
         centerX: am5.percent(50),
         centerY: am5.percent(70),
         fontSize: this.getResponsiveFontSize(18, window.innerWidth),
-        fill: am5.color(0x64748B)
+        fill: am5.color(0x64748B),
+        showTooltipOn:'click'
       })
     );
 
@@ -116,13 +118,17 @@ export class DonutChartComponent implements OnInit, OnDestroy {
         centerX: am5.percent(50),
         centerY: am5.percent(10),
         fontSize: this.getResponsiveFontSize(20, window.innerWidth),
-        fontWeight: "600"
+        fontWeight: "600",
+
       })
     );
 
     series.slices.template.setAll({
       stroke: am5.color(0xffffff),
-      strokeWidth: 2
+      strokeWidth: 2,
+      tooltipText:'',
+      toggleKey: 'disabled'
+
     });
 
     series.labels.template.setAll({
@@ -130,9 +136,12 @@ export class DonutChartComponent implements OnInit, OnDestroy {
       text: "{valuePercentTotal.formatNumber('#.0')}%",
       inside: true,
       radius: 35,
-      fill: am5.color(0xffffff)
+      fill: am5.color(0xffffff),
     });
 
+
     series.data.setAll(this.data);
+    series.appear(1000, 100);
+
   }
 }
