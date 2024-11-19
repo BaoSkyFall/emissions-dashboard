@@ -9,15 +9,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { EmissionsState } from './state/emissions.state';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IconComponent } from './icon/icon.component';
+import { DonutChartComponent } from './donut-chart/donut-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    PieChartComponent,
+    DonutChartComponent,
     IconComponent
   ],
   imports: [

@@ -4,10 +4,11 @@ import * as am5percent from '@amcharts/amcharts5/percent';
 import { EmissionsData } from '../models/emissions.model';
 
 @Component({
-  selector: 'app-pie-chart',
-  template: '<div id="chartDiv" style="width: 100%; height: 500px;"></div>'
+  selector: 'app-donut-chart',
+  templateUrl: './donut-chart.component.html',
+  styleUrls: ['./donut-chart.component.css']
 })
-export class PieChartComponent implements OnInit, OnDestroy {
+export class DonutChartComponent implements OnInit, OnDestroy {
   @Input() data: EmissionsData[] = [];
   @Input() title: string = '';
   @Input() subtitle: string = '';
