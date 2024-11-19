@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IconComponent } from './icon/icon.component';
 import { DonutChartComponent } from './donut-chart/donut-chart.component';
 import { ScopeItemComponent } from './shared/pipe/components/scope-item/scope-item.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ScopeItemComponent } from './shared/pipe/components/scope-item/scope-it
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     NgxsModule.forRoot([EmissionsState])
   ],
   providers: [],

@@ -4,4 +4,6 @@ export interface EmissionsData {
   value: number;
   unit: string;
   year: number;
+  category?: string;
+  source?: string;
 }

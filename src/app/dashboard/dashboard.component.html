@@ -1,128 +1,168 @@
-<div class="p-6">
-
-
-  <div class="grid grid-cols-2 mb-6 rounded-lg">
-    <div class="bg-white  p-6 ">
-      <div class="flex justify-start items-start gap-3">
-
-        <app-icon name="cloud" color="text-green-500" background="#CEFBDF" styleBorder="circle"></app-icon>
-        <div class="flex flex-col">
-          <div class="text-md text-black-500">Total emissions (tCO₂e)</div>
-          <div class="text-3xl font-bold mt-1">45,000</div>
-          <div class=" text-sm flex items-center gap-1">
-              <span class="text-red-500 flex items-center gap-1 font-bold"> <app-icon name="long-arrow-alt-up" className="px-0"></app-icon> 12% </span>
-              <span>higher than the previous year</span>
-
+<div class="p-12">
+  <!-- Top Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 mb-6 rounded-lg">
+    <div class="bg-white p-6">
+      <div *ngIf="loading$ | async" class="animate-pulse">
+        <div class="flex gap-3">
+          <div class="w-10 sm:w-12 h-10 sm:h-12 bg-gray-200 rounded-full"></div>
+          <div class="flex-1">
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-6 sm:h-8 bg-gray-200 rounded w-1/2 mt-2"></div>
+            <div class="h-4 bg-gray-200 rounded w-2/3 mt-2"></div>
           </div>
         </div>
+      </div>
 
+      <div *ngIf="!(loading$ | async)" class="flex justify-start items-start gap-3">
+        <app-icon name="cloud" color="text-green-500" background="#CEFBDF" styleBorder="circle"></app-icon>
+        <div class="flex flex-col">
+          <div class="text-sm sm:text-md text-black-500">Total emissions (tCO₂e)</div>
+          <div class="text-2xl sm:text-3xl font-bold mt-1">45,000</div>
+          <div class="text-xs sm:text-sm  flex items-center gap-1">
+            <span class="text-red-500 flex items-center gap-1 font-bold">
+              <app-icon name="arrow-up" className="px-0"></app-icon> 12%
+            </span>
+            <span>higher than the previous year</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="bg-white  p-6 ">
-      <div class="flex justify-start items-start gap-3">
-          <app-icon name="bolt" color="text-green-500" background="#CEFBDF" styleBorder="circle"></app-icon>
-          <div class="flex flex-col">
+    <div class="bg-white p-6">
+      <div *ngIf="loading$ | async" class="animate-pulse">
+        <div class="flex gap-3">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <div class="flex-1">
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-6 sm:h-8 bg-gray-200 rounded w-1/2 mt-2"></div>
+            <div class="h-4 bg-gray-200 rounded w-2/3 mt-2"></div>
+          </div>
+        </div>
+      </div>
 
-          <div class="text-sm text-black-500">Energy consumption (tCO₂e)</div>
-          <div class="text-3xl font-bold mt-1">8,000</div>
-          <div class=" text-sm flex items-center gap-1">
-            <span class="text-green-500 flex items-center gap-1 font-bold"> <app-icon name="long-arrow-alt-up" className="px-0"></app-icon> 12% </span>
+      <div *ngIf="!(loading$ | async)" class="flex justify-start items-start gap-3">
+        <app-icon name="bolt" color="text-green-500" background="#CEFBDF" styleBorder="circle"></app-icon>
+        <div class="flex flex-col">
+          <div class="text-sm sm:text-md text-black-500">Energy consumption (tCO₂e)</div>
+          <div class="text-2xl sm:text-3xl font-bold mt-1">8,000</div>
+          <div class="text-xs sm:text-sm flex items-center gap-1">
+            <span class="text-green-500 flex items-center gap-1 font-bold">
+              <app-icon name="arrow-up" className="px-0"></app-icon> 12%
+            </span>
             <span>lower than the previous year</span>
-
+          </div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-6">
+  <!-- Charts Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Emissions Summary Card -->
     <div class="bg-white rounded-lg p-6 shadow">
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex flex-col sm:flex-row gap-2 justify-between items-baseline mb-4">
         <h2 class="font-semibold">Emissions summary</h2>
         <div class="flex gap-4">
           <mat-form-field appearance="outline" class="custom-select business-unit-select">
-            <!-- <mat-icon matPrefix class="flex items-center h-full">
-              <app-icon name="calendar" className="flex items-center h-full justify-center"></app-icon>
-            </mat-icon> -->
-            <mat-select [value]="''">
+            <mat-select [value]="''" [disabled]="loading$ | async">
               <mat-option value="">All business unit</mat-option>
               <mat-option value="unit1">Unit 1</mat-option>
               <mat-option value="unit2">Unit 2</mat-option>
               <mat-option value="unit3">Unit 3</mat-option>
               <mat-option value="unit4">Unit 4</mat-option>
-
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="custom-select">
             <mat-icon matPrefix class="flex items-center h-full">
               <app-icon name="calendar" className="flex items-center h-full justify-center"></app-icon>
             </mat-icon>
-            <mat-select [value]="'2024'">
-              <mat-option value="2024">2024</mat-option>
-              <mat-option value="2023">2023</mat-option>
+            <mat-select [value]="selectedYear" (selectionChange)="onYearChange($event.value)"
+              [disabled]="loading$ | async">
+              <mat-option *ngFor="let year of years" [value]="year">
+                {{year}}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
 
-      <!-- Donut chart placeholder -->
-      <div class="">
-        <div class="dashboard grid grid-cols-2">
-          <app-donut-chart [data]="(emissions$ | async) || []" title="28000" subtitle="Total emissions in tCO2e">
+      <div *ngIf="loading$ | async" class="h-64 flex items-center justify-center">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+      <div class="flex justify-center items-center">
+        <div *ngIf="!(loading$ | async)" class="w-full grid grid-cols-2 justify-center">
+          <app-donut-chart [data]="(emissions$ | async) || []" [title]="(totalEmissions$ | async) || '' | number"
+            subtitle="Total emissions (tCO2e)">
           </app-donut-chart>
-          <div class="mx-5 flex flex-col justify-center ">
-            <app-scope-item
-            *ngFor="let scope of scopeData"
-            [color]="scope.color"
-            [title]="scope.title"
-            [value]="scope.value">
-          </app-scope-item>
+          <div class="mx-5 flex flex-col justify-center">
+            <app-scope-item *ngFor="let scope of scopeData" [color]="scope.color" [title]="scope.title"
+              [value]="scope.value">
+            </app-scope-item>
           </div>
-
         </div>
+      </div>
+      <div class="flex justify-center items-center">
+        <button class="text-blue-500 font-semibold flex items-center text-md">View Details <app-icon name="arrow-right"></app-icon></button>
       </div>
     </div>
 
+    <!-- Compare To Card -->
     <div class="bg-white rounded-lg p-6 shadow">
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex  flex-col sm:flex-row justify-between gap-2 items-baseline mb-4">
         <h2 class="font-semibold">Compare to</h2>
-        <select class="border rounded px-3 py-1">
-          <option value="2023">2023</option>
-        </select>
+        <mat-form-field appearance="outline" class="custom-select">
+          <mat-icon matPrefix class="flex items-center h-full">
+            <app-icon name="calendar" className="flex items-center h-full justify-center"></app-icon>
+          </mat-icon>
+          <mat-select [value]="2023" [disabled]="loading$ | async">
+            <mat-option *ngFor="let year of years" [value]="year">
+              {{year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
 
-      <div class="space-y-4">
-        <div class="flex justify-between items-center">
+      <div *ngIf="loading$ | async" class="space-y-4 animate-pulse">
+        <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+        <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+        <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+        <div class="h-6 bg-gray-200 rounded w-full"></div>
+      </div>
+
+      <div *ngIf="!(loading$ | async)" class="space-y-4">
+        <div class="flex flex-col justify-between gap-1">
           <div class="text-sm">Total emissions (tCO₂e)</div>
-          <div class="flex items-center gap-2">
-            <span class="font-semibold">44,000</span>
-            <span class="text-green-500 text-sm">+15,200 (34.55%)</span>
+          <div class="flex items-center gap-1">
+            <span class="text-2xl font-bold">44,000</span>
+            <span class="text-green-500 text-lg flex items-center gap-1 bg-green-100 px-2 font-semibold">
+              <app-icon name="arrow-down" className="px-0"></app-icon>15,200 (34.55%)</span>
           </div>
         </div>
 
-        <div class="flex justify-between items-center">
+        <div class="flex flex-col justify-between gap-1">
           <div class="text-sm">Scope 1 (tCO₂e)</div>
-          <div class="flex items-center gap-2">
-            <span class="font-semibold">22,000</span>
-            <span class="text-green-500 text-sm">+17,200 (78.18%)</span>
+          <div class="flex items-center gap-1">
+            <span class="text-2xl font-bold">22,000</span>
+            <span class="text-green-500 text-lg flex items-center gap-1 bg-green-100 px-2 font-semibold"><app-icon
+                name="arrow-down" className="px-0"></app-icon>17,200 (78.18%)</span>
           </div>
         </div>
 
-        <div class="flex justify-between items-center">
+        <div class="flex flex-col justify-between gap-1">
           <div class="text-sm">Scope 2 (tCO₂e)</div>
-          <div class="flex items-center gap-2">
-            <span class="font-semibold">12,000</span>
-            <span class="text-green-500 text-sm">+12,000 (100%)</span>
+          <div class="flex items-center gap-1">
+            <span class="text-2xl font-bold">12,000</span>
+            <span class="text-green-500 text-lg flex items-center gap-1 bg-green-100 px-2 font-semibold"><app-icon
+                name="arrow-down" className="px-0"></app-icon>12,000 (100%)</span>
           </div>
         </div>
 
-        <div class="flex justify-between items-center">
+        <div class="flex flex-col justify-between gap-1">
           <div class="text-sm">Scope 3 (tCO₂e)</div>
           <div class="flex items-center gap-2">
-            <span class="font-semibold">14,000</span>
-            <span class="text-green-500 text-sm">+14,000 (100%)</span>
+            <span class="text-2xl font-bold">14,000</span>
+            <span class="text-green-500 text-lg flex items-center gap-1 bg-green-100 px-2 font-semibold">
+              <app-icon name="arrow-down" className="px-0"></app-icon>14,000 (100%)</span>
           </div>
         </div>
       </div>

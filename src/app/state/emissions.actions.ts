@@ -2,8 +2,8 @@ export class LoadEmissions {
   static readonly type = '[Emissions] Load';
 }
 
-export class FilterByYear {
+export class ChangeYear {
   constructor(public year: number) {}
-  static readonly type = '[Emissions] Filter';
+  static readonly type = '[Emissions] Change Year';
 }
 
