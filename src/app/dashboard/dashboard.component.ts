@@ -11,7 +11,23 @@ import { EmissionsData } from '../models/emissions.model';
 })
 export class DashboardComponent implements OnInit {
   @Select(EmissionsState.getEmissions) emissions$!: Observable<EmissionsData[]>;
-
+  scopeData: any[] = [
+    {
+      color: '#00D1FF',
+      title: 'Scope 1 (tCO₂e)',
+      value: 24000
+    },
+    {
+      color: '#34C759',
+      title: 'Scope 2 (tCO₂e)',
+      value: 4800
+    },
+    {
+      color: '#007AFF',
+      title: 'Scope 3 (tCO₂e)',
+      value: 0
+    }
+  ];
   years = [2023, 2024];
   selectedYear = 2024;
 

@@ -40,3 +40,37 @@ mat-card-content {
   height: 300px;
   width: 100%;
 }
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-form-field-appearance-outline .mdc-notched-outline__leading {
+  border-radius: 10px 0 0 10px !important;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-form-field-appearance-outline .mdc-notched-outline__trailing {
+  border-radius: 0 10px 10px 0 !important;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-form-field-appearance-outline .mdc-notched-outline__notch {
+  border-right-style: solid !important;
+}
+.mat-mdc-select-panel {
+  border-radius: 10px !important;
+}
+
+/* Style for the options */
+.mat-mdc-option:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.mat-mdc-option:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Optional: different min-widths for each select if needed */
+.business-unit-select {
+  min-width: 200px;
+}
+
+.year-select {
+  min-width: 100px;
+}

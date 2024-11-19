@@ -12,13 +12,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IconComponent } from './icon/icon.component';
 import { DonutChartComponent } from './donut-chart/donut-chart.component';
+import { ScopeItemComponent } from './shared/pipe/components/scope-item/scope-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     DonutChartComponent,
-    IconComponent
+    IconComponent,
+    ScopeItemComponent
   ],
   imports: [
     AppRoutingModule,

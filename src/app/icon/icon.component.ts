@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-icon',
   template: `
-    <div [ngClass]="getContainerClasses()" [style.backgroundColor]="background">
+    <div [ngClass]="getContainerClasses()" [class]="this.className" [style.backgroundColor]="background">
       <i [class]="getIconClasses()"></i>
     </div>
   `,
@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
 export class IconComponent {
   @Input() name: string = '';
   @Input() color: string = '';
+  @Input() className: string = '';
   @Input() background: string = '';
   @Input() styleBorder: 'circle' | 'default' = 'default';
 
