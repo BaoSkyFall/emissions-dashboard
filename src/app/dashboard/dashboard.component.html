@@ -95,9 +95,10 @@
             subtitle="Total emissions (tCO2e)">
           </app-donut-chart>
           <div class="mx-5 flex flex-col justify-center">
-            <app-scope-item *ngFor="let scope of scopeData" [color]="scope.color" [title]="scope.title"
-              [value]="scope.value">
-            </app-scope-item>
+            <ng-container *ngFor="let scope of scopeData$ | async">
+              <app-scope-item [color]="scope.color" [title]="scope.title" [value]="scope.value">
+              </app-scope-item>
+            </ng-container>
           </div>
         </div>
       </div>
